@@ -1,0 +1,82 @@
+{
+    "configList": [
+        {
+            "base": {
+                "des": "cortex-a开发板",
+                "board": "hi3516dv300",
+                "kernel": "liteos_a",
+                "osversion": "1.0.0",
+                "frequency": "* Hz",
+                "flash": "* KB",
+                "ram": "* KB",
+                "rom": "* KB",
+                "ramAddr": "0x80000000"
+            },
+            "build": {
+                "script": "liteos-build",
+                "support": [
+                    "liteos-build"
+                ],
+                "liteos-build": {
+                    "command": {
+                        "build": "make -j16 -C ./kernel/liteos_a",
+                        "clean": "make clean -C ./kernel/liteos_a"
+                    }
+                }
+            },
+            "upload": {
+                "script": "network",
+                "support": [
+                    "serialport",
+                    "network"
+                ],
+                "network": {
+                    "serial": {
+                        "baudRate": "115200",
+                        "databits": "8"
+                    },
+                    "network": {
+                        "hostip": "192.168.0.3",
+                        "remoteip": "192.168.0.2",
+                        "gateway": "192.168.0.1",
+                        "netmask": "255.255.255.0",
+                        "phyaddr": "00:39:3e:8c:72:d5"
+                    },
+                    "device": {
+                        "memtype": "spi nor"
+                    }
+                },
+                "partitions": [
+                    {
+                        "destAddr": "0x100000",
+                        "path": "kernel\\liteos_a\\out\\${Base:board}\\liteos.bin",
+                        "size": "0x300000",
+                        "used": true
+                    }
+                ]
+            },
+            "debug": {
+                "script": "openocd-debug-gdb",
+                "support": [
+                    "openocd-debug-gdb",
+                    "openocd-debug-lldb"
+                ],
+                "openocd-debug-gdb": {
+                    "launchAttach": {
+                        "executable": "./kernel/liteos_a/out/hi3516dv300/liteos",
+                        "postAttachCommandsAddSymbolfile": [],
+                        "openOCDLaunchCommands": [
+                            "init"
+                        ],
+                        "postAttachCommandsSetSubPath": [],
+                        "postAttachCommandsDefaultAdress": "0x80000000",
+                        "postRestartCommands": [
+                            "monitor mww phys 0x12020004 0"
+                        ],
+                        "maxBreakpoints": "6"
+                    }
+                }
+            }
+        }
+    ]
+}

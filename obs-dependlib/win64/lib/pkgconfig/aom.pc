@@ -1,0 +1,14 @@
+# libaom pkg-config.
+prefix=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: aom
+Description: Alliance for Open Media AV1 codec library v3.2.0-393-g402e264b9.
+Version: 3.2.0
+Requires:
+Conflicts:
+Libs: -L${libdir} -laom
+Libs.private: -lm
+Cflags: -I${includedir}

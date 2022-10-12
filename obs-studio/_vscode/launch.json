@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(Windows) 启动",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "输入程序名称，例如 ${workspaceFolder}/a.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "externalTerminal"
+        },
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./kernel/liteos_a/out/hi3516dv300/liteos",
+            "name": "hi3516dv300-openocd-debug-gdb",
+            "request": "attach",
+            "type": "deveco-debug",
+            "servertype": "openocd",
+            "showDevDebugOutput": "0",
+            "maxBreakpoints": "6",
+            "configFiles": [
+                "C:\\Users\\huangjk\\.deveco\\ohos_bundles\\@huawei\\deveco_config\\openocd\\hi3516dv300\\openocd.cfg",
+                "C:\\Users\\huangjk\\.deveco\\ohos_bundles\\@huawei\\deveco_config\\openocd\\hi3516dv300\\chip.cfg"
+            ],
+            "openOCDLaunchCommands": [
+                "init"
+            ],
+            "postAttachCommands": [
+                "show substitute-path",
+                "monitor cortex_a maskisr on",
+                "monitor gdb_breakpoint_override hard",
+                "set remotetimeout unlimited",
+                "set $pc=0x80000000",
+                "break OsMain"
+            ],
+            "postRestartCommands": [
+                "monitor mww phys 0x12020004 0"
+            ],
+            "armToolchainPath": "${config:deveco-debug.armToolchainPath}"
+        },
+        {
+            "type": "node-terminal",
+            "name": "JavaScript Debug Terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

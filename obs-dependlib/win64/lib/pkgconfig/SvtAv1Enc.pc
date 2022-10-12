@@ -1,0 +1,9 @@
+prefix=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64
+includedir=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64/include/svt-av1
+libdir=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64/lib
+
+Name: SvtAv1Enc
+Description: SVT (Scalable Video Technology) for AV1 encoder library
+Version: 0.9.0
+Libs: -L${libdir} -lSvtAv1Enc 
+Cflags: -I${includedir} -DEB_DLL

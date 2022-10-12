@@ -1,0 +1,12 @@
+prefix='/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64'
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: mbedx509
+Description: The mbedTLS X.509 library
+Version: 2.24.0
+Requires.private: mbedcrypto
+Conflicts:
+Libs: -L${libdir} -lmbedx509
+Cflags: -I${includedir} -I${includedir}/mbedtls

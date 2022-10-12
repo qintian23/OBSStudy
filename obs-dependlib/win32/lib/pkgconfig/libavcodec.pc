@@ -1,0 +1,14 @@
+prefix=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86
+exec_prefix=${prefix}
+libdir=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib
+includedir=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/include
+
+Name: libavcodec
+Description: FFmpeg codec library
+Version: 58.134.100
+Requires: 
+Requires.private: libswresample >= 3.9.100, libavutil >= 56.70.100
+Conflicts:
+Libs: -L${libdir}  -lavcodec 
+Libs.private: -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lvpx -lm -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lvpx -lm -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lvpx -lm -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lvpx -lm -lm -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lz -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lopus -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lvorbis -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lvorbisenc -L/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86/lib -lx264 -lmfplat -lmfuuid -lole32 -lstrmiids -lole32 -luser32
+Cflags: -I${includedir}

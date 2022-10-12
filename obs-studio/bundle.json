@@ -1,0 +1,16 @@
+{
+    "ohos": {
+        "board": "hi3516dv300",
+        "kernel": "liteos_a",
+        "os": "1.0.0"
+    },
+    "name": "obs_studio",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "make -j16 -C ./kernel/liteos_a",
+        "build_rootfs": "make rootfs FSTYPE=jffs2 -C ./kernel/liteos_a",
+        "clean": "make clean -C ./kernel/liteos_a",
+        "menuconfig": "start cmd.exe /k make menuconfig -C ./kernel/liteos_a",
+        "upload": "node %UPLOAD_SCRIPT%"
+    }
+}

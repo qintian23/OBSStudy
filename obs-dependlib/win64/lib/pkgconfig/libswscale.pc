@@ -1,0 +1,14 @@
+prefix=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64
+exec_prefix=${prefix}
+libdir=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64/lib
+includedir=/home/runner/work/obs-deps/obs-deps/windows/obs-dependencies-x86_64/include
+
+Name: libswscale
+Description: FFmpeg image rescaling library
+Version: 5.9.100
+Requires: 
+Requires.private: libavutil >= 56.70.100
+Conflicts:
+Libs: -L${libdir}  -lswscale 
+Libs.private: -lm
+Cflags: -I${includedir}
